@@ -15,8 +15,9 @@ namespace CarpinteriaApp_1w3.Entidades
         {
             NombreFormaPago = string.Empty;
         }
-        public FormaPago(string nombreFormaPago)
+        public FormaPago(string nombreFormaPago, int nroFormaPago)
         {
+            NroFormaPago = nroFormaPago;
             NombreFormaPago = nombreFormaPago;
         }
         public override string ToString()

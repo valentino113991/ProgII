@@ -47,7 +47,6 @@
             this.ColArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColQuitar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
             this.SuspendLayout();
@@ -171,6 +170,7 @@
             this.btnAceptar.TabIndex = 32;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -197,7 +197,6 @@
             this.ColArticulo,
             this.ColPrecio,
             this.ColCantidad,
-            this.ColFormaPago,
             this.ColQuitar});
             this.dgvDetalles.Location = new System.Drawing.Point(22, 184);
             this.dgvDetalles.Name = "dgvDetalles";
@@ -211,7 +210,7 @@
             // lblFormaPago
             // 
             this.lblFormaPago.AutoSize = true;
-            this.lblFormaPago.Location = new System.Drawing.Point(61, 112);
+            this.lblFormaPago.Location = new System.Drawing.Point(38, 362);
             this.lblFormaPago.Name = "lblFormaPago";
             this.lblFormaPago.Size = new System.Drawing.Size(100, 16);
             this.lblFormaPago.TabIndex = 39;
@@ -221,7 +220,7 @@
             // 
             this.cboFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFormaPago.FormattingEnabled = true;
-            this.cboFormaPago.Location = new System.Drawing.Point(173, 108);
+            this.cboFormaPago.Location = new System.Drawing.Point(150, 358);
             this.cboFormaPago.Margin = new System.Windows.Forms.Padding(4);
             this.cboFormaPago.Name = "cboFormaPago";
             this.cboFormaPago.Size = new System.Drawing.Size(253, 24);
@@ -261,14 +260,6 @@
             this.ColCantidad.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColCantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColCantidad.Width = 80;
-            // 
-            // ColFormaPago
-            // 
-            this.ColFormaPago.HeaderText = "Forma de pago";
-            this.ColFormaPago.MinimumWidth = 6;
-            this.ColFormaPago.Name = "ColFormaPago";
-            this.ColFormaPago.ReadOnly = true;
-            this.ColFormaPago.Width = 105;
             // 
             // ColQuitar
             // 
@@ -332,7 +323,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColArticulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColFormaPago;
         private System.Windows.Forms.DataGridViewButtonColumn ColQuitar;
     }
 }

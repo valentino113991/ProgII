@@ -24,5 +24,15 @@ namespace CarpinteriaApp_1w3.Presentacion
             frmNuevoPresupuesto.ShowDialog();
         }
 
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultarFacturas frmConsultarFacturas = new FrmConsultarFacturas();
+            frmConsultarFacturas.ShowDialog();
+        }
     }
 }

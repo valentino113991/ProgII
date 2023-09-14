@@ -1,4 +1,5 @@
-﻿using CarpinteriaApp_1w3.Entidades;
+﻿using CarpinteriaApp_1w3.Datos;
+using CarpinteriaApp_1w3.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +16,17 @@ namespace CarpinteriaApp_1w3.Presentacion
     public partial class FrmNuevaFactura : Form
     {
         Factura factura;
+        DBHelper gestor;
         public FrmNuevaFactura()
         {
             InitializeComponent();
             factura = new Factura();
+            gestor = new DBHelper();
         }
 
         private void FrmNuevoPresupuesto_Load(object sender, EventArgs e)
         {
-            lblFacturaId.Text += ProximaFactura();
+            lblFacturaId.Text += gestor.ProximaFactura();
             CargarArticulos();
             CargarFormasPago();
             txtCliente.Text = "Consumidor Final";
@@ -33,55 +36,18 @@ namespace CarpinteriaApp_1w3.Presentacion
 
         private void CargarFormasPago()
         {
-            string cadenaConexion = @"Data Source = localhost; Initial Catalog = facturacion; Integrated Security = True";
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
-            conexion.Open();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = conexion;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = "SP_CONSULTAR_FORMAS_PAGO";
-            DataTable tabla = new DataTable();
-            tabla.Load(comando.ExecuteReader());
+            DataTable tabla = gestor.Consultar("SP_CONSULTAR_FORMAS_PAGO");
             cboFormaPago.DataSource = tabla;
             cboFormaPago.ValueMember = "nro_forma_pago";
             cboFormaPago.DisplayMember = "nombre";
-            conexion.Close();
         }
 
         private void CargarArticulos()
         {
-            string cadenaConexion = @"Data Source = localhost; Initial Catalog = facturacion; Integrated Security = True";
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
-            conexion.Open();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = conexion;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = "SP_CONSULTAR_ART";
-            DataTable tabla = new DataTable();
-            tabla.Load(comando.ExecuteReader());
+            DataTable tabla = gestor.Consultar("SP_CONSULTAR_ART");
             cboArticulo.DataSource = tabla;
             cboArticulo.ValueMember = "nro_articulo";
             cboArticulo.DisplayMember = "nombre";
-            conexion.Close();
-        }
-
-
-
-        private int ProximaFactura()
-        {
-            string cadenaConexion = @"Data Source = localhost; Initial Catalog = facturacion; Integrated Security = True";
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
-            conexion.Open();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = conexion;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = "SP_PROXIMO_ID";
-            SqlParameter param = new SqlParameter("@next", SqlDbType.Int);
-            param.Direction = ParameterDirection.Output;
-            comando.Parameters.Add(param);
-            comando.ExecuteNonQuery();
-            conexion.Close();
-            return (int)param.Value;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -130,19 +96,11 @@ namespace CarpinteriaApp_1w3.Presentacion
             double precio = Convert.ToDouble(item.Row.ItemArray[2]);
             Articulo a = new Articulo(nro_articulo, n_articulo, precio);
 
-            DataRowView itemFormaPago = (DataRowView)cboFormaPago.SelectedItem;
-            int nro_forma_pago = Convert.ToInt32(itemFormaPago.Row.ItemArray[0]);
-            string n_forma_pago = Convert.ToString(itemFormaPago.Row.ItemArray[1]);
-            FormaPago fp = new FormaPago(n_forma_pago);
-
             int cantidad = Convert.ToInt32(txtCantidad.Text);
-
             DetalleFactura dF = new DetalleFactura(a, cantidad);
 
             factura.AgregarDetalle(dF);
-
-
-            dgvDetalles.Rows.Add(new Object[] { nro_articulo, n_articulo,precio, cantidad, n_forma_pago, "Quitar" });
+            dgvDetalles.Rows.Add(new Object[] { nro_articulo, n_articulo,precio, cantidad, "Quitar" });
 
             calcularTotales();
         }
@@ -155,12 +113,50 @@ namespace CarpinteriaApp_1w3.Presentacion
 
         private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvDetalles.CurrentCell.ColumnIndex == 5)
+            if(dgvDetalles.CurrentCell.ColumnIndex == 4)
             {
                 factura.QuitarDetalle(dgvDetalles.CurrentRow.Index);
                 dgvDetalles.Rows.RemoveAt(dgvDetalles.CurrentRow.Index);
                 calcularTotales();
             }
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCliente.Text))
+            {
+                MessageBox.Show("Debe ingresar un cliente...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (dgvDetalles.Rows.Count == 0)
+            {
+                MessageBox.Show("Debe ingresar al menos un detalle...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            GrabarPresupuesto();
+        }
+
+        private void GrabarPresupuesto()
+        {
+            factura.Fecha = Convert.ToDateTime(txtFecha.Text);
+            factura.Cliente = txtCliente.Text;
+
+            DataRowView itemFormaPago = (DataRowView)cboFormaPago.SelectedItem;
+            int nro_forma_pago = Convert.ToInt32(itemFormaPago.Row.ItemArray[0]);
+            string nombre_forma_pago = Convert.ToString(itemFormaPago.Row.ItemArray[1]);
+            FormaPago fp = new FormaPago(nombre_forma_pago, nro_forma_pago);
+
+            factura.FormaPago = fp;
+            if (gestor.ConfirmarFactura(factura))
+            {
+                MessageBox.Show("Se registró con éxito la factura...", "Informe", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("NO se pudo registrar la factura...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
     } 
 }

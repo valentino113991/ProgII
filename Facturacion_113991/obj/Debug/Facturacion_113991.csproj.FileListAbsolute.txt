@@ -22,3 +22,16 @@ C:\Users\Usuario\Desktop\Facturacion_113991\obj\Debug\Facturacion_113991.csproj.
 C:\Users\Usuario\Desktop\Facturacion_113991\obj\Debug\Facturacion_113991.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Desktop\Facturacion_113991\obj\Debug\CarpinteriaApp_1w3.exe
 C:\Users\Usuario\Desktop\Facturacion_113991\obj\Debug\CarpinteriaApp_1w3.pdb
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\Facturacion_113991.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\Facturacion_113991.csproj.SuggestedBindingRedirects.cache
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\CarpinteriaApp_1w3.Presentacion.FrmNuevaFactura.resources
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\CarpinteriaApp_1w3.Presentacion.FrmPrincipal.resources
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\Facturacion_113991.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\Facturacion_113991.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\bin\Debug\FacturacionApp_1w3.exe.config
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\bin\Debug\FacturacionApp_1w3.exe
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\bin\Debug\FacturacionApp_1w3.pdb
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\FacturacionApp_1w3.Properties.Resources.resources
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\FacturacionApp_1w3.exe
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\FacturacionApp_1w3.pdb
+C:\Users\Usuario\Desktop\repo_progII\ProgII\Facturacion_113991\obj\Debug\CarpinteriaApp_1w3.Presentacion.FrmConsultarFacturas.resources

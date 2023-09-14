@@ -16,7 +16,7 @@ namespace CarpinteriaApp_1w3.Presentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmNuevaFactura());
+            Application.Run(new FrmPrincipal());
         }
     }
 }
