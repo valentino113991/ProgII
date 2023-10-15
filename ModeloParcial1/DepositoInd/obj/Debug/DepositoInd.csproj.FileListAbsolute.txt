@@ -1,0 +1,12 @@
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\bin\Debug\DepositoInd.exe.config
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\bin\Debug\DepositoInd.exe
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\bin\Debug\DepositoInd.pdb
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.csproj.SuggestedBindingRedirects.cache
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.presentacion.FrmNuevaOrden.resources
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.Principal.resources
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.Properties.Resources.resources
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.exe
+C:\Users\Usuario\Desktop\progra 2 proyectos\DepositoInd\obj\Debug\DepositoInd.pdb
